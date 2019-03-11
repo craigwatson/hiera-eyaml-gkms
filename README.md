@@ -28,18 +28,30 @@ encrypted with this plugin.
 This plugin adds several options to `hiera-eyaml`:
 
 ```
---gkms-project      MANDATORY: GCP Project
---gkms-keyring      MANDATORY: Google Cloud KMS Keyring
---gkms-crypto-key   MANDATORY: Google Cloud KMS Key
+--gkms-project      Required: GCP Project
+--gkms-keyring      Required: Google Cloud KMS Keyring
+--gkms-crypto-key   Required: Google Cloud KMS Key
+--gkms-location     Google Cloud KMS Keyring location (default: europe-west1)
 --gkms-auth-type    Authentication type for Google API (default: serviceaccount)
---gkms-credentials  Path to service account JSON file (required for serviceaccount authentication)
+--gkms-credentials  Path to service account JSON file (Required when using serviceaccount authentication type)
 ```
 
 The minimum configuration required is the GCP project, keyring and crypto-key to use. If using a service account, you will also need to point the plugin to the JSON file containing the service account key.
 
+If using a configuration YAML file:
+
+```
+---
+gkms_project: 'graphite-melon-123567'
+gkms_auth_type: 'machineaccount'
+gkms_location: 'europe-west1'
+gkms_keyring: 'keyring'
+gkms_crypto_key: 'puppet_eyaml'
+```
+
 ## Usage with Google Compute Engine
 
-The plugin can also be run using Google Compute Engine's service account, and will need to be configured with the following IAM permissions:
+The plugin can also be run using Google Compute Engine's service account by passing `--gke-auth-type=machineaccount`, and will need to be configured with the following IAM permissions:
 
 - Authentication scope: https://www.googleapis.com/auth/cloudkms
 - IAM role: `roles/cloudkms.cryptoKeyEncrypterDecrypter`
