@@ -43,32 +43,34 @@ class Hiera
             },
           }
 
-          def self.encrypt plaintext
+          def self.kms_client
+            credentials = self.option :credentials
+            return Google::Cloud::Kms.new(version: :v1, credentials: credentials)
+          end
+
+          def self.key_path
             project     = self.option :project
             location    = self.option :location
             keyring     = self.option :keyring
             crypto_key  = self.option :crypto_key
-            credentials = self.option :credentials
 
-            kms_client = Google::Cloud::Kms.new(version: :v1, credentials: credentials)
-            key_path = Google::Cloud::Kms::V1::KeyManagementServiceClient.crypto_key_path(project, location, keyring, crypto_key)
+            raise StandardError, "gkms_project is not defined" unless project
+            raise StandardError, "gkms_keyring is not defined" unless keyring
+            raise StandardError, "gkms_crypto_key is not defined" unless crypto_key
 
-            resp = kms_client.encrypt(key_path, plaintext)
-            resp.ciphertext
+            return Google::Cloud::Kms::V1::KeyManagementServiceClient.crypto_key_path(project, location, keyring, crypto_key)
+          end
+
+          def self.encrypt plaintext
+            kms_client = self.kms_client
+            key_path = self.key_path
+            kms_client.encrypt(key_path, plaintext).ciphertext
           end
 
           def self.decrypt ciphertext
-            project     = self.option :project
-            location    = self.option :location
-            keyring     = self.option :keyring
-            crypto_key  = self.option :crypto_key
-            credentials = self.option :credentials
-
-            kms_client = Google::Cloud::Kms.new(version: :v1, credentials: credentials)
-            key_path = Google::Cloud::Kms::V1::KeyManagementServiceClient.crypto_key_path(project, location, keyring, crypto_key)
-
-            resp = kms_client.decrypt(key_path, ciphertext)
-            resp.plaintext
+            kms_client = self.kms_client
+            key_path = self.key_path
+            kms_client.decrypt(key_path, ciphertext).plaintext
           end
         end
       end
