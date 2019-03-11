@@ -1,6 +1,6 @@
 # hiera-eyaml-gkms
 
-[![Build Status](https://secure.travis-ci.org/craigwatson/hiera-eyaml-gkms.svg?branch=master)](http://travis-ci.org/craigwatson/hiera-eyaml-gkms
+[![Build Status](https://secure.travis-ci.org/craigwatson/hiera-eyaml-gkms.svg?branch=master)](http://travis-ci.org/craigwatson/hiera-eyaml-gkms)
 [![Gem Version](https://img.shields.io/gem/v/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 [![Gem Downloads](https://img.shields.io/gem/dt/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 
