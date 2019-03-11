@@ -2,7 +2,7 @@ class Hiera
   module Backend
     module Eyaml
       module Encryptors
-        module Gkms
+        module GkmsVersion
           VERSION = '0.0.2'.freeze
         end
       end

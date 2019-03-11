@@ -15,7 +15,7 @@ class Hiera
       module Encryptors
         # Google KMS plugin for hiera-eyaml
         class Gkms < Encryptor
-          VERSION      = Hiera::Backend::Eyaml::Encryptors::Gkms::VERSION
+          VERSION      = Hiera::Backend::Eyaml::Encryptors::GkmsVersion::VERSION
           self.tag     = 'GKMS'
           self.options = {
             'project' => {

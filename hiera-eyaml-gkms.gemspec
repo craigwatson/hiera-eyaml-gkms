@@ -6,7 +6,7 @@ require 'English'
 
 Gem::Specification.new do |gem|
   gem.name          = 'hiera-eyaml-gkms'
-  gem.version       = Hiera::Backend::Eyaml::Encryptors::Gkms::VERSION
+  gem.version       = Hiera::Backend::Eyaml::Encryptors::GkmsVersion::VERSION
   gem.description   = 'Google Cloud KMS plugin for Hiera-EYAML'
   gem.summary       = 'Encryption plugin for hiera-eyaml backend for Hiera, using Google Cloud KMS'
   gem.author        = 'Craig Watson'
