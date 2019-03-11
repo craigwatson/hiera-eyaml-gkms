@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.author        = "Craig Watson"
   gem.license       = "Apache-2.0"
 
-  gem.homepage      = "http://github.com/craigwatson/hiera-eyaml-google-kms"
+  gem.homepage      = "https://github.com/craigwatson/hiera-eyaml-gkms"
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})

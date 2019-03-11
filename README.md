@@ -20,7 +20,7 @@ $ gem install hiera-eyaml google-cloud-kms
 # Installation
 
 ```
-$ gem install hiera-eyaml-google-kms
+$ gem install hiera-eyaml-gkms
 ```
 
 Then see [hiera-eyaml documentation](https://github.com/voxpupuli/hiera-eyaml) for how to use the eyaml tool to encrypt and use the 'GKMS' encryption_type for values to be
