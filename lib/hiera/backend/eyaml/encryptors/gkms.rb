@@ -14,6 +14,7 @@ class Hiera
       module Encryptors
         class Gkms < Encryptor
 
+          VERSION      = "0.0.2"
           self.tag     = "GKMS"
           self.options = {
             :project => {

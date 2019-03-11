@@ -1,6 +1,6 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hiera/backend/eyaml/encryptors/gkms/version'
+require 'hiera/backend/eyaml/encryptors/gkms'
 
 Gem::Specification.new do |gem|
   gem.name          = "hiera-eyaml-gkms"
