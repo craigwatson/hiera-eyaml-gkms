@@ -1,7 +1,7 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'hiera/backend/eyaml/encryptors/gkms'
+require 'hiera/backend/eyaml/encryptors/gkms/version'
 require 'English'
 
 Gem::Specification.new do |gem|
@@ -18,6 +18,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency('hiera-eyaml', '>=1.3.8')
-  gem.add_runtime_dependency('google-cloud-kms')
+  gem.add_runtime_dependency('hiera-eyaml', '>=1.3.8')
+
+  gem.add_development_dependency('rake')
+  gem.add_development_dependency('rubocop')
 end

@@ -7,6 +7,7 @@ end
 require 'hiera/backend/eyaml/encryptor'
 require 'hiera/backend/eyaml/utils'
 require 'hiera/backend/eyaml/options'
+require 'hiera/backend/eyaml/encryptors/gkms/version'
 
 class Hiera
   module Backend
@@ -14,7 +15,7 @@ class Hiera
       module Encryptors
         # Google KMS plugin for hiera-eyaml
         class Gkms < Encryptor
-          VERSION      = '0.0.2'.freeze
+          VERSION      = Hiera::Backend::Eyaml::Encryptors::Gkms::VERSION
           self.tag     = 'GKMS'
           self.options = {
             'project' => {
