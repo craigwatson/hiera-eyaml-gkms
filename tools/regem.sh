@@ -2,7 +2,7 @@
 
 set -e
 
-GEM_NAME="hiera-eyaml-google-kms"
+GEM_NAME="hiera-eyaml-gkms"
 
 gem uninstall "${GEM_NAME}" --executables
 RAKE_OUT=$(rake build)

@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'hiera/backend/eyaml/encryptors/gkms/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "hiera-eyaml-google-kms"
+  gem.name          = "hiera-eyaml-gkms"
   gem.version       = Hiera::Backend::Eyaml::Encryptors::Gkms::VERSION
   gem.description   = "Google Cloud KMS plugin for Hiera-EYAML"
   gem.summary       = "Encryption plugin for hiera-eyaml backend for Hiera, using Google Cloud KMS"
