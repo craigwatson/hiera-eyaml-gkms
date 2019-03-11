@@ -1,5 +1,8 @@
 # hiera-eyaml-google-kms
 
+[![Gem Version](https://img.shields.io/gem/v/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
+[![Gem Downloads](https://img.shields.io/gem/dt/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
+
 This is a plugin encryptor for the [hiera-eyaml](https://github.com/voxpupuli/hiera-eyaml) project, which encrypts and decrypts Hiera data using Google Cloud KMS, based on [hiera-eyaml-kms](https://github.com/adenot/hiera-eyaml-kms) by [Allan Denot](https://github.com/adenot).
 
 [Google Cloud KMS](https://cloud.google.com/kms) is a service that encrypts and decrypts data through API calls. Permissions are controlled by IAM.
