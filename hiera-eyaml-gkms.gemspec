@@ -18,8 +18,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_runtime_dependency('hiera-eyaml', '>=1.3.8')
+  gem.add_runtime_dependency('hiera-eyaml', '3.2.0')
+  gem.add_runtime_dependency('google-cloud-kms', '2.0.0')
+  gem.add_runtime_dependency('google-cloud-kms-v1', '0.3.0')
 
-  gem.add_development_dependency('rake')
-  gem.add_development_dependency('rubocop')
+  gem.add_development_dependency('rake', '13.0.1')
+  gem.add_development_dependency('rubocop', '1.3.1')
 end
