@@ -1,7 +1,7 @@
 ---
 AllCops:
   DisplayCopNames: true
-  TargetRubyVersion: '2.2'
+  TargetRubyVersion: '2.4'
 Metrics/LineLength:
   Description: People have wide screens, use them.
   Max: 200
@@ -57,7 +57,7 @@ Style/StringMethods:
   Enabled: true
 Layout/EndOfLine:
   Enabled: false
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
