@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.summary = 'Encryption plugin for hiera-eyaml backend for Hiera, using Google Cloud KMS'
   gem.author = 'Craig Watson'
   gem.license = 'Apache-2.0'
-  gem.required_ruby_version = '2.4'
+  gem.required_ruby_version = '>=2.4'
 
   gem.homepage = 'https://github.com/craigwatson/hiera-eyaml-gkms'
   gem.files = `git ls-files`.split($RS)
