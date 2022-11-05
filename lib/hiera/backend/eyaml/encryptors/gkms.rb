@@ -56,14 +56,15 @@ class Hiera
               credentials = option :credentials
               raise StandardError, 'gkms_credentials is not defined' unless credentials
 
-              ::Google::Cloud::Kms::V1::KeyManagementService::Client.configure do |config|
+              Google::Cloud::Kms.configure do |config|
                 config.credentials = credentials
+                config.timeout = 10.0
               end
             else
               ENV['GOOGLE_AUTH_SUPPRESS_CREDENTIALS_WARNINGS'] = '1'
             end
 
-            ::Google::Cloud::Kms::V1::KeyManagementService::Client.new
+            ::Google::Cloud::Kms.key_management_service
           end
 
           def self.key_path
