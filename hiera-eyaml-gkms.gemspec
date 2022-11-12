@@ -15,13 +15,13 @@ Gem::Specification.new do |gem|
   gem.license     = 'Apache-2.0'
   gem.homepage    = 'https://github.com/craigwatson/hiera-eyaml-gkms'
 
-  gem.files         = `git ls-files`.split($/).reject { |file| file =~ /^features.*$/ }
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ["lib"]
-  
+  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR).grep_v(%r{/^features.*$/})
+  gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
+  gem.require_paths = ['lib']
+
   gem.add_dependency('google-cloud-kms', '2.0.0')
   gem.add_dependency('hiera-eyaml', '>= 3.2.0', '< 4.0')
 
-  gem.required_ruby_version = '>=2.4', '< 4'
+  gem.required_ruby_version = '>= 2.5.0', ' < 4'
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end
