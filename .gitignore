@@ -6,5 +6,8 @@ pkg/
 tmp/
 .DS_Store
 .ruby-version
-hiera-eyaml-google-kms-*.gem
+*.gem
 Gemfile.lock
+vendor
+.bundle/
+.envrc
