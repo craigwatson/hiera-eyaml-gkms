@@ -3,6 +3,9 @@
 Release notes for the Google Cloud KMS hiera-eyaml plugin.
 
 ---------------------------------------------------------
+## 2022-11-13 - 0.2.0
+  * Fully supporting google-cloud-kms 2.0 constructor syntax
+
 ## 2021-06-03 - 0.1.1
   * Loosened dependency version requirement on hiera-eyaml for compatibility with Puppet 7.7
 
