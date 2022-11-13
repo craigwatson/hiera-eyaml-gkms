@@ -1,6 +1,6 @@
 # hiera-eyaml-gkms
 
-[![Build Status](https://secure.travis-ci.org/craigwatson/hiera-eyaml-gkms.svg?branch=master)](http://travis-ci.org/craigwatson/hiera-eyaml-gkms)
+[![Build Status](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test/badge.svg?branch=master)](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test.yml?query=branch%3Amaster++)
 [![Gem Version](https://img.shields.io/gem/v/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 [![Gem Downloads](https://img.shields.io/gem/dt/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 
@@ -62,6 +62,8 @@ The plugin can also be run using Google Compute Engine's service account by pass
 
 ## Terraform Example
 
+_Note: Due to changes in Terraform provider syntax and formatting, this code may age!_
+
 ```
 resource "google_kms_key_ring" "keyring" {
   name     = "keyring"
@@ -70,7 +72,7 @@ resource "google_kms_key_ring" "keyring" {
 
 resource "google_kms_crypto_key" "puppet_eyaml" {
   name     = "puppet_eyaml"
-  key_ring = "${google_kms_key_ring.keyring.self_link}"
+  key_ring = google_kms_key_ring.keyring.self_link
 
   lifecycle {
     prevent_destroy = true
@@ -78,7 +80,7 @@ resource "google_kms_crypto_key" "puppet_eyaml" {
 }
 
 resource "google_kms_crypto_key_iam_member" "eyaml" {
-  crypto_key_id = "${google_kms_crypto_key.puppet_eyaml.self_link}"
+  crypto_key_id = google_kms_crypto_key.puppet_eyaml.self_link
   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
   member        = "serviceAccount:${data.google_project.project.number}-compute@developer.gserviceaccount.com"
 }
