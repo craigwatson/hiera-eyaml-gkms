@@ -23,5 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency('hiera-eyaml', '>= 3.2.0', '< 4.0')
 
   gem.required_ruby_version = '>= 2.5.0', ' < 4'
-  gem.metadata['rubygems_mfa_required'] = 'true'
+  gem.metadata['rubygems_mfa_required'] = 'false'
 end

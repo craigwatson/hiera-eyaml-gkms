@@ -2,15 +2,22 @@
 AllCops:
   DisplayCopNames: true
   NewCops: enable
+  SuggestExtensions: false
 Gemspec/RequiredRubyVersion:
+  Enabled: false
+Gemspec/RequireMFA:
   Enabled: false
 Layout/LineLength:
   Description: People have wide screens, use them.
   Max: 200
+Metrics/MethodLength:
+  Enabled: false
 Style/BlockDelimiters:
   Description: Prefer braces for chaining. Mostly an aesthetical choice. Better to
     be consistent then.
   EnforcedStyle: braces_for_chaining
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
 Style/EmptyElse:
   Description: Enforce against empty else clauses, but allow `nil` for clarity.
   EnforcedStyle: empty
@@ -49,37 +56,3 @@ Style/Documentation:
   - spec/**/*
 Style/WordArray:
   EnforcedStyle: brackets
-Style/ClassAndModuleChildren:
-  Enabled: false
-Style/CollectionMethods:
-  Enabled: true
-Style/MethodCalledOnDoEndBlock:
-  Enabled: true
-Style/StringMethods:
-  Enabled: true
-Layout/EndOfLine:
-  Enabled: false
-Layout/HeredocIndentation:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-Metrics/BlockLength:
-  Enabled: false
-Metrics/ClassLength:
-  Enabled: false
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Metrics/MethodLength:
-  Enabled: false
-Metrics/ModuleLength:
-  Enabled: false
-Metrics/ParameterLists:
-  Enabled: false
-Metrics/PerceivedComplexity:
-  Enabled: false
-Style/AsciiComments:
-  Enabled: false
-Style/IfUnlessModifier:
-  Enabled: false
-Style/SymbolProc:
-  Enabled: false
