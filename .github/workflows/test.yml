@@ -52,7 +52,30 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-      - name: Verify gem builds
-        run: gem build *.gemspec
-      - name: Run tests
+      - name: Rubocop
         run: bundle exec rubocop
+      - name: Verify Build
+        run: gem build *.gemspec
+      - name: Integration
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_LOCATION: ${{ secrets.GCP_LOCATION }}
+          GCP_KEYRING: ${{ secrets.GCP_KEYRING }}
+          GCP_CRYPTO_KEY: ${{ secrets.GCP_CRYPTO_KEY }}
+        run: |
+          echo "${GCP_CREDENTIALS}" > ./credentials.json
+          echo "${GITHUB_SHA}" > ./input.txt
+          bundle exec eyaml encrypt --gkms-project="${GCP_PROJECT}" \
+                                    --gkms-location="${GCP_LOCATION}" \
+                                    --gkms-keyring="${GCP_KEYRING}" \
+                                    --gkms-crypto-key="${GCP_CRYPTO_KEY}" \
+                                    --gkms-credentials=./credentials.json \
+                                    -n gkms -o string -s "${GITHUB_SHA}" > ./cipher.txt
+          bundle exec eyaml decrypt --gkms-project="${GCP_PROJECT}" \
+                                    --gkms-location="${GCP_LOCATION}" \
+                                    --gkms-keyring="${GCP_KEYRING}" \
+                                    --gkms-crypto-key="${GCP_CRYPTO_KEY}" \
+                                    --gkms-credentials=./credentials.json \
+                                    -n gkms -f ./cipher.txt > ./plain.txt
+          diff ./input.txt ./plain.txt
