@@ -78,4 +78,7 @@ jobs:
                                     --gkms-crypto-key="${GCP_CRYPTO_KEY}" \
                                     --gkms-credentials=./credentials.json \
                                     -n gkms -f ./cipher.txt > ./plain.txt
+          echo "Input: ${GITHUB_SHA}"
+          echo "Ciphertext: $(cat ./cipher.txt)"
+          echo "Plaintext: $(cat ./plain.txt)"
           diff ./input.txt ./plain.txt
