@@ -1,6 +1,6 @@
 # hiera-eyaml-gkms
 
-[![Build Status](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test/badge.svg?branch=master)](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test.yml?query=branch%3Amaster++)
+[![Build Status](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/craigwatson/hiera-eyaml-gkms/actions/workflows/test.yml?query=branch%3Amaster++)
 [![Gem Version](https://img.shields.io/gem/v/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 [![Gem Downloads](https://img.shields.io/gem/dt/hiera-eyaml-gkms.svg)](https://rubygems.org/gems/hiera-eyaml-gkms)
 
