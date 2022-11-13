@@ -1,0 +1,58 @@
+name: Test
+
+on:
+  - pull_request
+  - push
+
+env:
+  BUNDLE_WITHOUT: release
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          - "2.5"
+          - "2.6"
+          - "2.7"
+          - "3.0"
+          - "3.1"
+        puppet:
+          - "~> 7.0"
+          - "~> 6.0"
+          - "https://github.com/puppetlabs/puppet.git#main"
+        exclude:
+          - ruby: "2.6"
+            puppet: "~> 7.0"
+          - ruby: "2.5"
+            puppet: "~> 7.0"
+
+          - ruby: "3.1"
+            puppet: "~> 6.0"
+          - ruby: "3.0"
+            puppet: "~> 6.0"
+
+          - ruby: "2.6"
+            puppet: "https://github.com/puppetlabs/puppet.git#main"
+          - ruby: "2.5"
+            puppet: "https://github.com/puppetlabs/puppet.git#main"
+    env:
+      PUPPET_VERSION: ${{ matrix.puppet }}
+      COVERAGE: ${{ matrix.coverage }}
+    name: "Ruby ${{ matrix.ruby }} - Puppet ${{ matrix.puppet }}"
+    steps:
+      - name: Enable coverage reporting on Ruby 3.1
+        if: matrix.puppet == '~> 7.0' && matrix.ruby == '3.1'
+        run: echo 'COVERAGE=yes' >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Verify gem builds
+        run: gem build *.gemspec
+      - name: Run tests
+        run: bundle exec rubocop
