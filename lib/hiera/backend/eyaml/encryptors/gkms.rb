@@ -107,8 +107,8 @@ class Hiera
 
               decryptor = Encryptor.find 'Gkms'
               ciphertext = decryptor.encode(ciphertext)
-              response = `echo #{ciphertext} | base64 -d | gcloud kms decrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
-              Base64.decode64(response)
+              resp = `echo #{ciphertext} | base64 -d | gcloud kms decrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
+              Base64.decode64(resp)
             else
               kms_client.decrypt(name: key_path, ciphertext: ciphertext).plaintext
             end
