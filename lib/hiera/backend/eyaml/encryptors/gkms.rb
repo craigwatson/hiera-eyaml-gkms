@@ -91,7 +91,7 @@ class Hiera
               location = option :location
               key_ring = option :keyring
               crypto_key = option :crypto_key
-              encrypted = `echo "#{enc_plaintext}" | gcloud kms encrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
+              `echo "#{enc_plaintext}" | gcloud kms encrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
             else
               kms_client.encrypt(name: key_path, plaintext: plaintext).ciphertext
             end
@@ -107,8 +107,8 @@ class Hiera
 
               decryptor = Encryptor.find 'Gkms'
               ciphertext = decryptor.encode(ciphertext)
-              shell_response = `echo #{ciphertext} | base64 -d | gcloud kms decrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
-              Base64.decode64(shell_response)
+              response = `echo #{ciphertext} | base64 -d | gcloud kms decrypt --location #{location} --keyring #{key_ring} --key #{crypto_key} --project #{project} --plaintext-file - --ciphertext-file -`
+              Base64.decode64(response)
             else
               kms_client.decrypt(name: key_path, ciphertext: ciphertext).plaintext
             end
