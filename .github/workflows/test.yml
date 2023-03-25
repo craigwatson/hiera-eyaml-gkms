@@ -70,12 +70,14 @@ jobs:
                                     --gkms-location="${GCP_LOCATION}" \
                                     --gkms-keyring="${GCP_KEYRING}" \
                                     --gkms-crypto-key="${GCP_CRYPTO_KEY}" \
+                                    --gkms-auth-type="serviceaccount" \
                                     --gkms-credentials=./credentials.json \
                                     -n gkms -o string -s "${GITHUB_SHA}" > ./cipher.txt
           bundle exec eyaml decrypt --gkms-project="${GCP_PROJECT}" \
                                     --gkms-location="${GCP_LOCATION}" \
                                     --gkms-keyring="${GCP_KEYRING}" \
                                     --gkms-crypto-key="${GCP_CRYPTO_KEY}" \
+                                    --gkms-auth-type="serviceaccount" \
                                     --gkms-credentials=./credentials.json \
                                     -n gkms -f ./cipher.txt > ./plain.txt
           echo "Input: ${GITHUB_SHA}"
