@@ -5,7 +5,7 @@ class Hiera
     module Eyaml
       module Encryptors
         module GkmsVersion
-          VERSION = '0.2.0'
+          VERSION = '0.2.1'
         end
       end
     end
